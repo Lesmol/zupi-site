@@ -18,12 +18,14 @@ const config: Config = {
       colors: {
         primary: "#583900",
         "lighter-primary": "#C98200",
+        "darker-primary": "#E69500",
         red: "#FF0000",
         "darker-red": "#D2042D",
       },
       backgroundColor: {
         orange: "#FFA500",
         "light-orange": "#FFD78D",
+        "lighter-orange": "#FFF2DA",
       },
       aspectRatio: {
         "752/444": "752/444",
