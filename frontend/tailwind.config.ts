@@ -30,6 +30,15 @@ const config: Config = {
       aspectRatio: {
         "752/444": "752/444",
       },
+      backgroundImage: {
+        bedroom: "url('/images/bedroom.webp')",
+        chairs: "url('/images/chair.jpg')",
+        coffee_table: "url('/images/coffee_table.jpg')",
+        dining: "url('/images/dining.webp')",
+        kitchen: "url('/images/kitchen.webp')",
+        outdoor: "url('/images/outdoor.jpg')",
+        sofas: "url('/images/sofas.jpg')",
+      },
     },
   },
   plugins: [],
