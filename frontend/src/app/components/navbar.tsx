@@ -94,7 +94,7 @@ function Navbar() {
           </svg>
         </button>
         {showMenu && (
-          <div className="absolute right-0 w-full bg-lighter-orange/60 backdrop-blur-sm p-4 shadow-xl rounded-xl top-24">
+          <div className="absolute right-0 w-full bg-lighter-orange/60 backdrop-blur-md p-4 shadow-xl rounded-xl top-24 lg:hidden">
             <div className="flex flex-wrap space-x-3 justify-center">
               <Link
                 href=""
@@ -134,7 +134,7 @@ function Navbar() {
               </Link>
             </div>
             <a href="">
-              <div className="bg-black mt-3 py-2 rounded w-full text-center text-white">
+              <div className="bg-black mt-3 py-2 rounded w-full max-w-2xl mx-auto text-center text-white">
                 Contact us
               </div>
             </a>
