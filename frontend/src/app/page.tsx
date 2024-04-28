@@ -6,6 +6,7 @@ import dining from "@/../public/images/dining.webp"
 import kitchen from "@/../public/images/kitchen.webp"
 import outdoor from "@/../public/images/outdoor.jpg"
 import sofas from "@/../public/images/sofas.jpg"
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -36,6 +37,23 @@ export default function Home() {
         <h1 className="text-center text-xl mt-10 sm:text-2xl md:text-4xl font-semibold">
           &#8212; Explore our range of products &#8212;
         </h1>
+
+        <div className="flex max-w-screen-xl space-x-2 mx-auto mt-6">
+          <div className="space-y-2">
+            <Image src={sofas} alt="A picture of a Bentley sofa set" className="rounded-lg"/>
+            <Image src={chair} alt="A picture of a Bentley dining room chair" className="rounded-lg"/>
+          </div>
+          <div className="space-y-2">
+            <div className="flex space-x-2">
+            <Image src={kitchen} alt="A picture of a minimalist modern kitchen" className="rounded-lg"/>
+            <Image src={bedroom} alt="A picture of a Bentley bed" className="rounded-lg"/>
+            </div>
+            <div className="space-y-2">
+            <Image src={outdoor} alt="A picture of a sunny outdoor space with a coffee table in chairs" className="rounded-lg"/>
+            <Image src={coffee_table} alt="A picture of a coffee table" className="rounded-lg"/>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   );
