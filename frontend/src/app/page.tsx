@@ -6,6 +6,7 @@ import dining from "@/../public/images/dining.webp";
 import kitchen from "@/../public/images/kitchen.webp";
 import outdoor from "@/../public/images/outdoor.jpg";
 import sofas from "@/../public/images/sofas.jpg";
+import lounge from "@/../public/images/lounge.jpg";
 import Image from "next/image";
 
 export default function Home() {
@@ -26,8 +27,8 @@ export default function Home() {
               that leaves your space looking stylish and feeling functional.
             </p>
           </div>
-          <img
-            src="http://surl.li/sstbh"
+          <Image
+            src={lounge}
             alt="An image of a couch and a coffee table"
             className="aspect-752/444 w-full max-w-3xl rounded-xl lg:w-2/3 lg:-ml-24"
           />
