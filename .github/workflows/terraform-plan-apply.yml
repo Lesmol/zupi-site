@@ -1,0 +1,82 @@
+name: "Terraform Plan/Apply"
+
+on:
+  pull_request:
+    branches: main
+    types: synchronize
+    
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  terraform-plan:
+    name: "Terraform init/plan"
+    runs-on: ubuntu-latest
+    env:
+      TF_VAR_subscription_id: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+      TF_VAR_tenant_id: ${{secrets.AZURE_TENANT_ID}}
+      TF_VAR_client_id: ${{secrets.AZURE_CLIENT_ID}}
+      TF_STATE_CONTAINER_NAME: ${{secrets.AZURE_CONTAINER_NAME}}
+      TF_STATE_ACCOUNT_NAME: ${{secrets.AZURE_ACCOUNT_NAME}}
+      TF_STATE_KEY: ${{secrets.AZURE_STATE_KEY}}
+
+    defaults:
+      run:
+        working-directory: ./terraform/app
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: "AZ CI login"
+        uses: azure/login@v2
+        with:
+          client-id: ${{secrets.AZURE_CLIENT_ID}}
+          tenant-id: ${{secrets.AZURE_TENANT_ID}}
+          subscription-id: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+
+      - name: "Setup Terraform"
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_wrapper: false
+
+      - name: "Run terraform init"
+        run: terraform init \ -backend-config="container_name=$TF_STATE_CONTAINER_NAME" \ -backend-config="storage_account_name=$TF_STATE_ACCOUNT_NAME" \ -backend-config="key=$TF_STATE_KEY"
+
+      - name: "Run terraform Plan"
+        run: terraform plan
+#   terraform-apply:
+#     name: "Terraform apply"
+#     needs: terraform-plan
+#     runs-on: ubuntu-latest
+#     env:
+#         TF_VAR_subscription_id: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+#         TF_VAR_tenant_id: ${{secrets.AZURE_TENANT_ID}}
+#         TF_VAR_client_id: ${{secrets.AZURE_CLIENT_ID}}
+
+#     defaults:
+#       run:
+#         working-directory: ./app
+
+#     steps:
+#       - uses: actions/checkout@v4
+
+#       - name: "AZ CI login"
+#         uses: azure/login@v2
+#         with:
+#           client-id: ${{secrets.AZURE_CLIENT_ID}}
+#           tenant-id: ${{secrets.AZURE_TENANT_ID}}
+#           subscription-id: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+
+#       - name: "Setup Terraform"
+#         uses: hashicorp/setup-terraform@v3
+#         with:
+#           terraform_wrapper: false
+
+#       - name: "Initialse terraform"
+#         run: terraform init \ -backend-config="container_name=$TF_STATE_CONTAINER_NAME" \ -backend-config="storage_account_name=$TF_STATE_ACCOUNT_NAME" \ -backend-config="key=$TF_STATE_KEY"
+
+#       - name: "Run terraform apply"
+#         run: terraform apply -auto-approve
