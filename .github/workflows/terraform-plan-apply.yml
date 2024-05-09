@@ -44,7 +44,7 @@ jobs:
           terraform_wrapper: false
 
       - name: "Run terraform init"
-        run: terraform init -backend-config="container_name=$container_name" -backend-config="storage_account_name=$account_name" -backend-config="key=$key"
+        run: terraform init -backend-config="container_name=$container_name" -backend-config="storage_account_name=$account_name" -backend-config="key=$key" -backend-config="client_secret=${{secrets.AZURE_SUBSCRIPTION_ID}}"
 
       - name: "Run terraform Plan"
         run: terraform plan -backend-config="container_name=$container_name" -backend-config="storage_account_name=$account_name" -backend-config="key=$key"
