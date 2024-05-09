@@ -2,6 +2,8 @@ name: "Terraform Plan/Apply"
 
 on:
   pull_request:
+    branches: main
+    types: synchronize
     
   workflow_dispatch:
 
