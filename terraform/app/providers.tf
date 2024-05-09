@@ -7,10 +7,10 @@ terraform {
   }
   # Remote backend
   backend "azurerm" {
+  use_oidc = true
   }
 }
 
 provider "azurerm" {
-  use_oidc = true
   features {}
 }
