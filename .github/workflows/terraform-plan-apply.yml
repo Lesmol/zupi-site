@@ -15,13 +15,14 @@ jobs:
   terraform-plan:
     name: "Terraform init/plan"
     runs-on: ubuntu-latest
+    continue-on-error: false
     env:
-      TF_VAR_subscription_id: ${{secrets.AZURE_SUBSCRIPTION_ID}}
-      TF_VAR_tenant_id: ${{secrets.AZURE_TENANT_ID}}
-      TF_VAR_client_id: ${{secrets.AZURE_CLIENT_ID}}
-      TF_STATE_CONTAINER_NAME: ${{secrets.AZURE_CONTAINER_NAME}}
-      TF_STATE_ACCOUNT_NAME: ${{secrets.AZURE_ACCOUNT_NAME}}
-      TF_STATE_KEY: ${{secrets.AZURE_STATE_KEY}}
+      subscription_id: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+      tenant_id: ${{secrets.AZURE_TENANT_ID}}
+      client_id: ${{secrets.AZURE_CLIENT_ID}}
+      container_name: ${{secrets.AZURE_CONTAINER_NAME}}
+      account_name: ${{secrets.AZURE_ACCOUNT_NAME}}
+      key: ${{secrets.AZURE_STATE_KEY}}
 
     defaults:
       run:
@@ -43,10 +44,10 @@ jobs:
           terraform_wrapper: false
 
       - name: "Run terraform init"
-        run: terraform init \ -backend-config="container_name=$TF_STATE_CONTAINER_NAME" \ -backend-config="storage_account_name=$TF_STATE_ACCOUNT_NAME" \ -backend-config="key=$TF_STATE_KEY"
+        run: terraform init -backend-config="container_name=$container_name" -backend-config="storage_account_name=$account_name" -backend-config="key=$key"
 
       - name: "Run terraform Plan"
-        run: terraform plan
+        run: terraform plan -backend-config="container_name=$container_name" -backend-config="storage_account_name=$account_name" -backend-config="key=$key"
 #   terraform-apply:
 #     name: "Terraform apply"
 #     needs: terraform-plan
