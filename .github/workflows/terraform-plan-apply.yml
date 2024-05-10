@@ -20,12 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: false
     env:
-      TF_VAR_client_secret: ${{secrets.AZURE_CLIENT_SECRET}}
-      TF_VAR_subscription_id: ${{secrets.AZURE_SUBSCRIPTION_ID}}
-      TF_VAR_tenant_id: ${{secrets.AZURE_TENANT_ID}}
-      TF_VAR_client_id: ${{secrets.AZURE_CLIENT_ID}}
-      TF_VAR_location: southafricanorth
-      TF_VAR_rg-name: zupi-terraform-state
+      ARM_CLIENT_SECRET: ${{secrets.AZURE_CLIENT_SECRET}}
+      ARM_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+      ARM_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
+      ARM_CLIENT_ID: ${{secrets.AZURE_CLIENT_ID}}
       container_name: ${{secrets.AZURE_CONTAINER_NAME}}
       account_name: ${{secrets.AZURE_ACCOUNT_NAME}}
       key: ${{secrets.AZURE_STATE_KEY}}
@@ -53,7 +51,7 @@ jobs:
         run: terraform init -backend-config="container_name=$container_name" -backend-config="storage_account_name=$account_name" -backend-config="key=$key"
 
       - name: "Run terraform Plan"
-        run: terraform plan -var
+        run: terraform plan
 #   terraform-apply:
 #     name: "Terraform apply"
 #     needs: terraform-plan
