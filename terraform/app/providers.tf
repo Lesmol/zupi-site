@@ -7,6 +7,7 @@ terraform {
   }
   # Remote backend
   backend "azurerm" {
+    use_azuread_auth = true
   }
 }
 
