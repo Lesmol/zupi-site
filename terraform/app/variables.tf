@@ -22,8 +22,3 @@ variable "client_id" {
   type        = string
   description = "The client id of the realtime chat service principal"
 }
-
-variable "client_secret" {
-  type        = string
-  description = "The client secret of the realtime chat service principal"
-}
