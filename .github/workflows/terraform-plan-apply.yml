@@ -4,9 +4,6 @@ on:
   pull_request:
     branches: main
     types: synchronize
-    
-  push:
-    branches: infrastucture
 
   workflow_dispatch:
 
