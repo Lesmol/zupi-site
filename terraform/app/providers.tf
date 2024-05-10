@@ -7,7 +7,6 @@ terraform {
   }
   # Remote backend
   backend "azurerm" {
-    resource_group_name  = "zupi-terraform-state"
   }
 }
 
