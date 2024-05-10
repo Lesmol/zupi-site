@@ -51,7 +51,7 @@ jobs:
         run: terraform init -backend-config="container_name=$container_name" -backend-config="storage_account_name=$account_name" -backend-config="key=$key"
 
       - name: "Run terraform Plan"
-        run: terraform plan -backend-config="container_name=$container_name" -backend-config="storage_account_name=$account_name" -backend-config="key=$key"
+        run: terraform plan
 #   terraform-apply:
 #     name: "Terraform apply"
 #     needs: terraform-plan
