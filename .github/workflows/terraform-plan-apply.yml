@@ -101,6 +101,7 @@ jobs:
          terraform init \
          -backend-config="container_name=$container_name" \
          -backend-config="storage_account_name=$account_name" \
+         -backend-config="resource_group_name=zupi-terraform-state" \
          -backend-config="key=$key"
 
       - name: "Run terraform apply"
