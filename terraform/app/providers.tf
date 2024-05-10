@@ -5,6 +5,7 @@ terraform {
       version = "3.93.0"
     }
   }
+
   # Remote backend
   backend "azurerm" {
   }
