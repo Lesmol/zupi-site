@@ -5,8 +5,12 @@ on:
     branches:
       - "*"
       - "!main"
-
+      
   workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
 
 env:
   ARM_CLIENT_SECRET: ${{secrets.AZURE_CLIENT_SECRET}}
