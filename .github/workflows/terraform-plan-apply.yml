@@ -3,7 +3,7 @@ name: Terraform Plan/Apply
 on:
   pull_request:
     branches: main
-    types: synchronize
+    types: closed
 
   workflow_dispatch:
 
@@ -31,6 +31,8 @@ jobs:
     defaults:
       run:
         working-directory: ./terraform/app
+
+    if: github.event.pull_request.merged == true
 
     steps:
       - uses: actions/checkout@v4
