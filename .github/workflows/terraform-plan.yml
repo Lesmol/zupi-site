@@ -12,17 +12,6 @@ permissions:
   id-token: write
   contents: read
 
-env:
-  ARM_CLIENT_SECRET: ${{secrets.AZURE_CLIENT_SECRET}}
-  ARM_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}
-  ARM_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
-  ARM_CLIENT_ID: ${{secrets.AZURE_CLIENT_ID}}
-  container_name: ${{secrets.AZURE_CONTAINER_NAME}}
-  account_name: ${{secrets.AZURE_ACCOUNT_NAME}}
-  key: ${{secrets.AZURE_STATE_KEY}}
-  location: southafricanorth
-  rg-name: zupi-terraform-state
-
 jobs:
   terraform-plan:
     name: "Terraform plan"
@@ -32,6 +21,17 @@ jobs:
     defaults:
       run:
         working-directory: ./terraform/app
+
+    env:
+      ARM_CLIENT_SECRET: ${{secrets.AZURE_CLIENT_SECRET}}
+      ARM_SUBSCRIPTION_ID: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+      ARM_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
+      ARM_CLIENT_ID: ${{secrets.AZURE_CLIENT_ID}}
+      container_name: ${{secrets.AZURE_CONTAINER_NAME}}
+      account_name: ${{secrets.AZURE_ACCOUNT_NAME}}
+      key: ${{secrets.AZURE_STATE_KEY}}
+      location: southafricanorth
+      rg-name: zupi-terraform-state
 
     steps:
       - uses: actions/checkout@v4
