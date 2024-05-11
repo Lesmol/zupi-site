@@ -1,15 +1,7 @@
-name: Terraform Plan/Apply
+name: Terraform Destroy
 
 on:
-  pull_request:
-    branches: main
-    types: synchronize
-
   workflow_dispatch:
-
-permissions:
-  id-token: write
-  contents: read
 
 env:
   ARM_CLIENT_SECRET: ${{secrets.AZURE_CLIENT_SECRET}}
@@ -19,15 +11,13 @@ env:
   container_name: ${{secrets.AZURE_CONTAINER_NAME}}
   account_name: ${{secrets.AZURE_ACCOUNT_NAME}}
   key: ${{secrets.AZURE_STATE_KEY}}
-  location: southafricanorth
-  rg-name: zupi-terraform-state
 
 jobs:
-  terraform-plan-apply:
-    name: "Terraform plan/apply"
+  terraform-plan-destroy:
+    name: "Terraform plan -destroy/ apply -destroy"
     runs-on: ubuntu-latest
     continue-on-error: false
-
+    
     defaults:
       run:
         working-directory: ./terraform/app
@@ -35,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: "Azure login"
+      - name: "AZ CI login"
         uses: azure/login@v2
         with:
           client-id: ${{secrets.AZURE_CLIENT_ID}}
@@ -47,7 +37,7 @@ jobs:
         with:
           terraform_wrapper: false
 
-      - name: "Run terraform init"
+      - name: Run terraform init
         run: |
           terraform init \
           -backend-config="container_name=$container_name" \
@@ -55,18 +45,8 @@ jobs:
           -backend-config="resource_group_name=$rg-name" \
           -backend-config="key=$key"
 
-      - name: "Run terraform validate"
-        run: terraform validate
-
-      - name: "Run terraform plan"
-        run: |
-          terraform plan \
-          -var="location=$location" \
-          -var="rg-name=$rg-name"
+      - name: "Run plan -destroy"
+        run: terraform plan -destroy
       
-      - name: "Run terraform apply"
-        run: |
-          terraform apply \
-          -var="location=$location" \
-          -var="rg-name=$rg-name" \
-          -auto-approve
+      - name: "Run terraform apply -destroy"
+        run: terraform apply -destroy -auto-approve

@@ -1,15 +1,12 @@
-name: Terraform Plan/Apply
+name: Terraform Plan
 
 on:
-  pull_request:
-    branches: main
-    types: synchronize
+  push:
+    branches:
+      - "*"
+      - "!main"
 
   workflow_dispatch:
-
-permissions:
-  id-token: write
-  contents: read
 
 env:
   ARM_CLIENT_SECRET: ${{secrets.AZURE_CLIENT_SECRET}}
@@ -23,8 +20,8 @@ env:
   rg-name: zupi-terraform-state
 
 jobs:
-  terraform-plan-apply:
-    name: "Terraform plan/apply"
+  terraform-plan:
+    name: "Terraform plan"
     runs-on: ubuntu-latest
     continue-on-error: false
 
@@ -35,7 +32,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: "Azure login"
+      - name: "AZ CI login"
         uses: azure/login@v2
         with:
           client-id: ${{secrets.AZURE_CLIENT_ID}}
@@ -63,10 +60,3 @@ jobs:
           terraform plan \
           -var="location=$location" \
           -var="rg-name=$rg-name"
-      
-      - name: "Run terraform apply"
-        run: |
-          terraform apply \
-          -var="location=$location" \
-          -var="rg-name=$rg-name" \
-          -auto-approve
