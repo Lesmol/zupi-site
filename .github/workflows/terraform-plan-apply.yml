@@ -20,7 +20,7 @@ env:
   account_name: ${{secrets.AZURE_ACCOUNT_NAME}}
   key: ${{secrets.AZURE_STATE_KEY}}
   location: southafricanorth
-  rg-name: zupi-terraform-state
+  rg_name: zupi-terraform-state
 
 jobs:
   terraform-plan-apply:
@@ -52,7 +52,7 @@ jobs:
           terraform init \
           -backend-config="container_name=$container_name" \
           -backend-config="storage_account_name=$account_name" \
-          -backend-config="resource_group_name=$rg-name" \
+          -backend-config="resource_group_name=$rg_name" \
           -backend-config="key=$key"
 
       - name: "Run terraform validate"
@@ -62,11 +62,11 @@ jobs:
         run: |
           terraform plan \
           -var="location=$location" \
-          -var="rg-name=$rg-name"
+          -var="rg-name=$rg_name"
       
       - name: "Run terraform apply"
         run: |
           terraform apply \
           -var="location=$location" \
-          -var="rg-name=$rg-name" \
+          -var="rg-name=$rg_name" \
           -auto-approve

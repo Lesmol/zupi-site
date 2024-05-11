@@ -15,6 +15,7 @@ env:
   container_name: ${{secrets.AZURE_CONTAINER_NAME}}
   account_name: ${{secrets.AZURE_ACCOUNT_NAME}}
   key: ${{secrets.AZURE_STATE_KEY}}
+  rg_name: zupi-terraform-state
 
 jobs:
   terraform-plan-destroy:
@@ -46,7 +47,7 @@ jobs:
           terraform init \
           -backend-config="container_name=$container_name" \
           -backend-config="storage_account_name=$account_name" \
-          -backend-config="resource_group_name=$rg-name" \
+          -backend-config="resource_group_name=$rg_name" \
           -backend-config="key=$key"
 
       - name: "Run plan -destroy"
