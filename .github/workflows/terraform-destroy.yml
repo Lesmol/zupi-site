@@ -19,7 +19,7 @@ env:
 
 jobs:
   terraform-plan-destroy:
-    name: "Terraform plan -destroy/ apply -destroy"
+    name: Terraform plan -destroy/ apply -destroy
     runs-on: ubuntu-latest
     continue-on-error: false
     
@@ -30,14 +30,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: "AZ CI login"
+      - name: AZ CI login
         uses: azure/login@v2
         with:
           client-id: ${{secrets.AZURE_CLIENT_ID}}
           tenant-id: ${{secrets.AZURE_TENANT_ID}}
           subscription-id: ${{secrets.AZURE_SUBSCRIPTION_ID}}
 
-      - name: "Setup terraform"
+      - name: Setup terraform
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_wrapper: false
@@ -50,8 +50,8 @@ jobs:
           -backend-config="resource_group_name=$rg_name" \
           -backend-config="key=$key"
 
-      - name: "Run plan -destroy"
+      - name: Run plan -destroy
         run: terraform plan -destroy
       
-      - name: "Run terraform apply -destroy"
+      - name: Run terraform apply -destroy
         run: terraform apply -destroy -auto-approve
