@@ -1,12 +1,12 @@
 name: Terraform Plan/Apply
 
 on:
-  pull_request:
-    branches: main
-    types: 
-      - opened
-      - reopened
-      - closed
+  # pull_request:
+  #   branches: main
+  #   types: 
+  #     - opened
+  #     - reopened
+  #     - closed
 
   workflow_dispatch:
 

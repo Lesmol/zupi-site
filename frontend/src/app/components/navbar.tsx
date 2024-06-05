@@ -12,7 +12,7 @@ function Navbar() {
   }
 
   return (
-    <nav className="relative flex justify-between bg-light-orange w-11/12 max-w-screen-2xl rounded-full mx-auto p-2">
+    <nav className="relative flex justify-between bg-light-orange w-11/12 max-w-screen-xl rounded-full mx-auto p-2">
       <div className="flex space-x-6 items-center">
         <Image src={logo} alt="Logo" className="w-16 text-primary" />
         <div className="space-x-4">
