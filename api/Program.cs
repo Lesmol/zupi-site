@@ -1,4 +1,5 @@
 using api.Data;
+using api.Data.Repository;
 using api.Data.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +17,9 @@ builder.Services.AddDbContext<ProductsContext>(options =>
 
 //IProductService DI scoped service
 builder.Services.AddScoped<IProductService, ProductService>();
+
+//IProductRepository DI scoped service
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 
