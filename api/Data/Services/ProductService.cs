@@ -1,27 +1,49 @@
+using api.Data.Repository;
 using api.Models;
 
 namespace api.Data.Services
 {
     public class ProductService : IProductService
     {
-        public Task<IEnumerable<Product>> GetAll()
+        private readonly IProductRepository _repository;
+        private readonly ILogger<ProductService> _logger;
+
+        public ProductService(ILogger<ProductService> logger, IProductRepository repository)
         {
-            throw new NotImplementedException();
+            this._logger = logger;
+            this._repository = repository;
         }
 
-        public Task<IEnumerable<Product?>> GetByCategory(string category)
+        public async Task<IEnumerable<Product>> GetAll()
         {
-            throw new NotImplementedException();
+            var result = await _repository
+                .GetAll();
+
+            return result;
         }
 
-        public Task<Product?> GetById(int id)
+        public async Task<IEnumerable<Product?>> GetByCategory(string category)
         {
-            throw new NotImplementedException();
+            var result = await _repository
+                .GetByCategory(category);
+
+            return result;
         }
 
-        public bool ProductExists(int id)
+        public async Task<Product?> GetById(int id)
         {
-            throw new NotImplementedException();
+            var result = await _repository
+                .GetById(id);
+
+            return result;
+        }
+
+        public Task<bool> ProductExists(int id)
+        {
+            var result = _repository
+                .ProductExists(id);
+
+            return result;
         }
     }
 }

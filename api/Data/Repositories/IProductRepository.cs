@@ -1,8 +1,8 @@
 using api.Models;
 
-namespace api.Data
+namespace api.Data.Repository
 {
-    public interface IProductService
+    public interface IProductRepository
     {
         Task<IEnumerable<Product>> GetAll();
         Task<Product?> GetById(int id);

@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using api.Data;
 using api.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -20,21 +16,21 @@ namespace api.Controllers
         }
 
         [HttpGet]
-        public Task<IEnumerable<Product>> GetAll()
+        public async Task<IEnumerable<Product>> GetAll()
         {
-            return _service.GetAll();
+            return await _service.GetAll();
         }
 
         [HttpGet]
-        public Task<Product?> GetById(int id)
+        public async Task<Product?> GetById(int id)
         {
-            return _service.GetById(id);
+            return await _service.GetById(id);
         }
 
         [HttpGet]
-        public bool ProductExists(int id)
+        public async Task<bool> ProductExists(int id)
         {
-            return _service.ProductExists(id);
+            return await _service.ProductExists(id);
         }
     }
 }
