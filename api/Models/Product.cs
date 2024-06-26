@@ -1,6 +1,6 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace api.Models
+namespace WebAPI.Models
 {
     public class Product
     {
@@ -19,8 +19,7 @@ namespace api.Models
         public required string ProductCategory { get; set; }
 
         [Required]
-        [Range(1, int.MaxValue)]
-        public required int ProductPrice { get; set; }
+        public required decimal ProductPrice { get; set; }
 
         [Required]
         public required string ImageUrl { get; set; }

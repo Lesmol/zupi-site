@@ -1,8 +1,8 @@
-using api.Data;
-using api.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebAPI.Data.Services;
+using WebAPI.Models;
 
-namespace api.Controllers
+namespace WebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -21,13 +21,13 @@ namespace api.Controllers
             return await _service.GetAll();
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<Product?> GetById(int id)
         {
             return await _service.GetById(id);
         }
 
-        [HttpGet]
+        [HttpGet("exists/{id}")]
         public async Task<bool> ProductExists(int id)
         {
             return await _service.ProductExists(id);

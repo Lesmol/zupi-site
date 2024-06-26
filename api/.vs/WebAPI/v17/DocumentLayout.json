@@ -1,0 +1,200 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|c:\\users\\dukewebbs\\onedrive - ctu career\\3rd year\\1st semester\\adp\\fa3\\webapi\\controllers\\productsendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|solutionrelative:controllers\\productsendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|c:\\users\\dukewebbs\\onedrive - ctu career\\3rd year\\1st semester\\adp\\fa3\\webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|c:\\users\\dukewebbs\\onedrive - ctu career\\3rd year\\1st semester\\adp\\fa3\\webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|c:\\users\\dukewebbs\\onedrive - ctu career\\3rd year\\1st semester\\adp\\fa3\\webapi\\data\\services\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|solutionrelative:data\\services\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|c:\\users\\dukewebbs\\onedrive - ctu career\\3rd year\\1st semester\\adp\\fa3\\webapi\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|solutionrelative:models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|c:\\users\\dukewebbs\\onedrive - ctu career\\3rd year\\1st semester\\adp\\fa3\\webapi\\data\\productscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|solutionrelative:data\\productscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|c:\\users\\dukewebbs\\onedrive - ctu career\\3rd year\\1st semester\\adp\\fa3\\webapi\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|solutionrelative:controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|c:\\users\\dukewebbs\\onedrive - ctu career\\3rd year\\1st semester\\adp\\fa3\\webapi\\data\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|solutionrelative:data\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|c:\\users\\dukewebbs\\onedrive - ctu career\\3rd year\\1st semester\\adp\\fa3\\webapi\\data\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|solutionrelative:data\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|c:\\users\\dukewebbs\\onedrive - ctu career\\3rd year\\1st semester\\adp\\fa3\\webapi\\data\\repositories\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{377154E2-EB79-43BD-BF66-5CD05DD262C6}|WebAPI.csproj|solutionrelative:data\\repositories\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductsEndpoints.cs",
+              "DocumentMoniker": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\Controllers\\ProductsEndpoints.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductsEndpoints.cs",
+              "ToolTip": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\Controllers\\ProductsEndpoints.cs",
+              "RelativeToolTip": "Controllers\\ProductsEndpoints.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-26T12:27:03.881Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "Controllers\\ProductsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T16:25:50.459Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\Data\\Repositories\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "Data\\Repositories\\ProductRepository.cs",
+              "ToolTip": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\Data\\Repositories\\ProductRepository.cs",
+              "RelativeToolTip": "Data\\Repositories\\ProductRepository.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAD4vyYAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T16:17:42.16Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IProductRepository.cs",
+              "DocumentMoniker": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\Data\\Repositories\\IProductRepository.cs",
+              "RelativeDocumentMoniker": "Data\\Repositories\\IProductRepository.cs",
+              "ToolTip": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\Data\\Repositories\\IProductRepository.cs",
+              "RelativeToolTip": "Data\\Repositories\\IProductRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T16:17:19.072Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\Data\\Services\\ProductService.cs",
+              "RelativeDocumentMoniker": "Data\\Services\\ProductService.cs",
+              "ToolTip": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\Data\\Services\\ProductService.cs",
+              "RelativeToolTip": "Data\\Services\\ProductService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T16:16:16.143Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAA8wC0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T15:59:11.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "Models\\Product.cs",
+              "ToolTip": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\Models\\Product.cs",
+              "RelativeToolTip": "Models\\Product.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-26T12:39:00.468Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IProductService.cs",
+              "DocumentMoniker": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\Data\\Services\\IProductService.cs",
+              "RelativeDocumentMoniker": "Data\\Services\\IProductService.cs",
+              "ToolTip": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\Data\\Services\\IProductService.cs",
+              "RelativeToolTip": "Data\\Services\\IProductService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T16:15:51.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductsContext.cs",
+              "DocumentMoniker": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\Data\\ProductsContext.cs",
+              "RelativeDocumentMoniker": "Data\\ProductsContext.cs",
+              "ToolTip": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\Data\\ProductsContext.cs",
+              "RelativeToolTip": "Data\\ProductsContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T16:14:49.63Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-08T16:10:50.544Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
-using api.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using WebAPI.Models;
 
-namespace api.Data.Repository
+namespace WebAPI.Data.Repositories
 {
     public class ProductRepository : IProductRepository
     {

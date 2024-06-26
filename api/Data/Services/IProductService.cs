@@ -1,6 +1,6 @@
-using api.Models;
+﻿using WebAPI.Models;
 
-namespace api.Data
+namespace WebAPI.Data.Services
 {
     public interface IProductService
     {

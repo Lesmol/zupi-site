@@ -1,7 +1,7 @@
-using api.Data.Repository;
-using api.Models;
+﻿using WebAPI.Data.Repositories;
+using WebAPI.Models;
 
-namespace api.Data.Services
+namespace WebAPI.Data.Services
 {
     public class ProductService : IProductService
     {
