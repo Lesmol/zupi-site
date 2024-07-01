@@ -1,14 +1,29 @@
 trigger:
-- main
+  branches:
+    include:
+      - "*"
+      - main
+
+variables:
+  ARM_CLIENT_SECRET: $(AZURE_CLIENT_SECRET)
+  ARM_SUBSCRIPTION_ID: $(AZURE_SUBSCRIPTION_ID)
+  ARM_TENANT_ID: $(AZURE_TENANT_ID)
+  ARM_CLIENT_ID: $(AZURE_CLIENT_ID)
+  container_name: $(AZURE_CONTAINER_NAME)
+  account_name: $(AZURE_ACCOUNT_NAME)
+  key: $(AZURE_STATE_KEY)
+  location: southafricanorth
+  rg_name: zupi-terraform-state
 
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+jobs:
+  - job: terraform_plan
+    displayName: "Terraform Plan"
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo Lets goooo!
-  displayName: 'Run a multi-line script'
+    steps:
+      - script: |
+          echo Hello, world!!!
+          echo I am Lesedi.
+        displayName: Run Hello world
