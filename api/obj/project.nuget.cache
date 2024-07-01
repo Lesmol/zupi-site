@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FsiMjkqHbHQW/+OywK7i8dzQXVhqCu9cE+ccz1DxH5L6+GqvbHL/VZqqOq3ukZ/qb+BBUVPa7/3i8VLESyUyWA==",
+  "dgSpecHash": "wHpI67Fd8D+wOd6iG/M8eH7gqTwFr3yy1IBUQ57qsTj41zeiSoSgzdAi7zko+1F2nFobsHC19qyjnLDPRe0XOw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\WebAPI.csproj",
+  "projectFilePath": "D:\\Code\\React\\zupi-site\\api\\WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DukeWebbs\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\DukeWebbs\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

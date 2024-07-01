@@ -11756,11 +11756,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\WebAPI.csproj",
+      "projectUniqueName": "D:\\Code\\React\\zupi-site\\api\\WebAPI.csproj",
       "projectName": "WebAPI",
-      "projectPath": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\WebAPI.csproj",
+      "projectPath": "D:\\Code\\React\\zupi-site\\api\\WebAPI.csproj",
       "packagesPath": "C:\\Users\\DukeWebbs\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DukeWebbs\\OneDrive - CTU Career\\3rd Year\\1st Semester\\ADP\\FA3\\WebAPI\\obj\\",
+      "outputPath": "D:\\Code\\React\\zupi-site\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DukeWebbs\\AppData\\Roaming\\NuGet\\NuGet.Config",
