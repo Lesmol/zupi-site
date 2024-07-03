@@ -1,3 +1,5 @@
+"use client";
+
 import Navbar from "./components/navbar";
 import bedroom from "@/../public/images/bedroom.webp";
 import chair from "@/../public/images/chair.jpg";
@@ -8,8 +10,27 @@ import outdoor from "@/../public/images/outdoor.jpg";
 import sofas from "@/../public/images/sofas.jpg";
 import lounge from "@/../public/images/lounge.jpg";
 import Image from "next/image";
+import { useEffect } from "react";
+import { fetchProduct, fetchProducts } from "../actions/products";
 
 export default function Home() {
+  useEffect(() => {
+    // TODO: provide productive return messages to the frontend
+    // lambda function to fetch products with server-side function
+    async function fetchProductsData() {
+      const result = await fetchProducts();
+      console.log(result);
+    }
+
+    fetchProductsData();
+  }, []);
+
+  async function fetchProductData(id: number) {
+    // TODO: provide productive return messages to the frontend
+    // function to fetch product with server-side function
+    const result = await fetchProduct(id);
+  }
+
   return (
     <main>
       {/* Hero section */}

@@ -35,6 +35,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.Use((ctx, next) =>
+{
+    ctx.Response.Headers["Access-Control-Allow-Origin"] = "http://localhost:3000";
+    return next();
+});
+
 app.UseExceptionHandler(appError =>
 {
     appError.Run(async context =>
