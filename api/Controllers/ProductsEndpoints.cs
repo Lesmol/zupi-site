@@ -15,6 +15,7 @@ namespace api.Controllers
             group.MapGet("/", GetAll);
             group.MapGet("/{id}", GetById);
             group.MapGet("/exists{id}", ProductExists);
+            group.MapGet("/search", Search);
         }
 
         public static async Task<IResult> GetAll(IProductService service)
@@ -28,7 +29,8 @@ namespace api.Controllers
         {
             var result = await service.GetById(id);
 
-            if (result is null) {
+            if (result is null)
+            {
                 return Results.NotFound("Product Does Not Exist");
             }
 
@@ -38,6 +40,23 @@ namespace api.Controllers
         public static async Task<IResult> ProductExists(IProductService service, int id)
         {
             var result = await service.GetById(id);
+
+            return Results.Ok(result);
+        }
+
+        public static async Task<IResult> Search(IProductService service, string query)
+        {
+            if (string.IsNullOrEmpty(query))
+            {
+                return Results.BadRequest("Query string is required");
+            }
+
+            var result = await service.Search(query);
+
+            if (result is null)
+            {
+                return Results.NotFound("Products don't exist");
+            }
 
             return Results.Ok(result);
         }

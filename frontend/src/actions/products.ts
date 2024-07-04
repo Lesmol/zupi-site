@@ -14,7 +14,7 @@ interface Product {
 // server-side function that fetches products and returns an array
 export async function fetchProducts(): Promise<Product[] | []> {
   // define data variable that store products
-  let data;
+  let products: Product[] | [] = [];
 
   try {
     const response = await fetch("http://localhost:5290/v1/products");
@@ -24,20 +24,19 @@ export async function fetchProducts(): Promise<Product[] | []> {
       throw new Error("Failed to fetch products.");
     }
 
-    data = await response.json();
+    products = await response.json();
   } catch (error) {
     // write the error to the console and return an empty array
-    console.error(error);
-    data = [];
+    console.error(`Error fetching products: ${error}`);
   }
 
-  return data;
+  return products;
 }
 
 // server-side function that fetches a product and returns it
 export async function fetchProduct(id: number): Promise<Product | null> {
   // define data variable that store the product
-  let data;
+  let productInfo: Product | null = null;
 
   try {
     const response = await fetch(`http://localhost:5290/v1/products/${id}`);
@@ -47,11 +46,35 @@ export async function fetchProduct(id: number): Promise<Product | null> {
       throw new Error(response.statusText);
     }
 
-    data = await response.json();
+    productInfo = await response.json();
   } catch (error) {
     // write the error to the console and return null
-    data = null;
+    console.error(`Error fetching product: ${error}`);
   }
 
-  return data;
+  return productInfo;
+}
+
+// server-side function that checks if a products exists
+export async function productExists(id: number): Promise<boolean | null> {
+  // define data variable that store the product
+  let productExists : boolean | null = null;
+
+  try {
+    const response = await fetch(
+      `http://localhost:5290/v1/products/exists/${id}`
+    );
+
+    if (!response.ok) {
+      // throw an error
+      throw new Error(response.statusText);
+    }
+
+    productExists  = await response.json();
+  } catch (error) {
+    // write the error to the console and return null
+    console.error(`Error checking product existence: ${error}`);
+  }
+
+  return productExists ;
 }

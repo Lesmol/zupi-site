@@ -45,5 +45,13 @@ namespace WebAPI.Data.Services
 
             return result;
         }
+
+        public async Task<IEnumerable<Product?>> Search(string query)
+        {
+            var result = await _repository
+                .Search(query);
+
+            return result;
+        }
     }
 }

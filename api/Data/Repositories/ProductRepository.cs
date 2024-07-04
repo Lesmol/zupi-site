@@ -48,5 +48,13 @@ namespace WebAPI.Data.Repositories
                 .Products
                 .AnyAsync(product => product.Id == id);
         }
+
+        public async Task<IEnumerable<Product?>> Search(string query)
+        {
+            return await _context
+                .Products
+                .Where(p => p.ProductName.Contains(query) || p.ProductDescription.Contains(query))
+                .ToListAsync();
+        }
     }
 }
