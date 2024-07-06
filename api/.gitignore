@@ -3,7 +3,7 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
-# Ignore bin and obj file
+# Ignore bin and obj directory
 bin/
 obj/
 
@@ -82,6 +82,8 @@ StyleCopReport.xml
 *.iobj
 *.pch
 *.pdb
+*.dll
+*.exe
 *.ipdb
 *.pgc
 *.pgd
