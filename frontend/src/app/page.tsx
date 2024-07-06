@@ -10,15 +10,20 @@ import outdoor from "@/../public/images/outdoor.jpg";
 import sofas from "@/../public/images/sofas.jpg";
 import lounge from "@/../public/images/lounge.jpg";
 import Image from "next/image";
-import { useEffect } from "react";
-import { fetchProduct, fetchProducts } from "../actions/products";
+import { useEffect, useState } from "react";
+import { fetchProduct, fetchProducts, Product } from "../actions/products";
 
 export default function Home() {
+  const [products, setProducts] = useState<Product[] | []>([]);
+  const placeholder = new Array(8).fill(null);
+
   useEffect(() => {
+    // ! on the first fetch to the database, it always exceeds the time limit and requires a refresh
     // TODO: provide productive return messages to the frontend
     // lambda function to fetch products with server-side function
     async function fetchProductsData() {
       const result = await fetchProducts();
+      // setProducts(result);
       console.log(result);
     }
 
@@ -143,6 +148,23 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Products section */}
+      <section className="container flex flex-wrap justify-around mt-24 p-4 max-w-screen-xl mx-auto">
+        {products.length === 0
+          ? placeholder.map(() => {
+              return (
+                <div className="h-80 w-72 animate-skeleton rounded-lg mb-10"></div>
+              );
+            })
+          : products.map((product) => {
+              return (
+                <div className="h-80 w-72 animate-skeleton rounded-lg mb-10">
+                  {product.productName}
+                </div>
+              );
+            })}
       </section>
     </main>
   );

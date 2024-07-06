@@ -2,7 +2,7 @@
 
 // TODO: provide productive return messages to the frontend
 // creating Product interface that defines the Product structure
-interface Product {
+export interface Product {
   id: number;
   productName: string;
   productDescription: string;
@@ -58,7 +58,7 @@ export async function fetchProduct(id: number): Promise<Product | null> {
 // server-side function that checks if a products exists
 export async function productExists(id: number): Promise<boolean | null> {
   // define data variable that store the product
-  let productExists : boolean | null = null;
+  let productExists: boolean | null = null;
 
   try {
     const response = await fetch(
@@ -70,11 +70,11 @@ export async function productExists(id: number): Promise<boolean | null> {
       throw new Error(response.statusText);
     }
 
-    productExists  = await response.json();
+    productExists = await response.json();
   } catch (error) {
     // write the error to the console and return null
     console.error(`Error checking product existence: ${error}`);
   }
 
-  return productExists ;
+  return productExists;
 }

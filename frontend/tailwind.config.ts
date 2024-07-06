@@ -39,6 +39,16 @@ const config: Config = {
         outdoor: "url('/images/outdoor.jpg')",
         sofas: "url('/images/sofas.jpg')",
       },
+      keyframes: {
+        skeleton: {
+          "0%": { backgroundColor: "#E6E6E6" },
+          "50%": { backgroundColor: "#CCCCCC" },
+          "100%": { backgroundColor: "#E6E6E6" },
+        },
+      },
+      animation: {
+        skeleton: "skeleton 2.75s infinite",
+      },
     },
   },
   plugins: [],
