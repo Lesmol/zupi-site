@@ -23,7 +23,7 @@ export default function Home() {
     // lambda function to fetch products with server-side function
     async function fetchProductsData() {
       const result = await fetchProducts();
-      // setProducts(result);
+      setProducts(result);
       console.log(result);
     }
 
@@ -37,7 +37,7 @@ export default function Home() {
   }
 
   return (
-    <main>
+    <>
       {/* Hero section */}
       <section className="bg-orange p-4">
         <Navbar />
@@ -151,21 +151,65 @@ export default function Home() {
       </section>
 
       {/* Products section */}
-      <section className="container flex flex-wrap justify-around mt-24 p-4 max-w-screen-xl mx-auto">
-        {products.length === 0
-          ? placeholder.map(() => {
-              return (
-                <div className="h-80 w-72 animate-skeleton rounded-lg mb-10"></div>
-              );
-            })
-          : products.map((product) => {
-              return (
-                <div className="h-80 w-72 animate-skeleton rounded-lg mb-10">
-                  {product.productName}
-                </div>
-              );
-            })}
+      <section className="container mt-16 p-4 max-w-screen-xl mx-auto">
+        <h1 className="text-center text-xl mb-6 sm:text-2xl md:text-4xl font-semibold">
+          &#8212; Our products &#8212;
+        </h1>
+
+        <div className="flex flex-wrap justify-around">
+          {products.length === 0
+            ? placeholder.map(() => {
+                return (
+                  <div className="h-96 w-72 bg-gray-100 rounded-lg mb-10">
+                    {/* Product image skeleton */}
+                    <div className="rounded w-11/12 mx-auto mt-3 aspect-square animate-skeleton"></div>
+                    {/* Product name skeleton */}
+                    <div className="rounded-full mt-5 ml-3 w-56 h-3 animate-skeleton"></div>
+                    <div className="rounded-full mt-2 ml-3 w-44 h-3 animate-skeleton"></div>
+                    {/* Product price skeleton */}
+                    <div className="rounded-full mt-5 ml-3 w-24 h-3 animate-skeleton"></div>
+                  </div>
+                );
+              })
+            : products.slice(0, 8).map((product) => {
+                return (
+                  <a href="#">
+                    <div className="group h-96 max-w-72 mb-10 overflow-clip">
+                      <div className="overflow-clip rounded">
+                        <img
+                          src={product.imageUrl}
+                          alt={product.productDescription}
+                          className="w-full aspect-square object-cover md:group-hover:scale-105 transition duration-300 ease-out"
+                        />
+                      </div>
+
+                      <h3 className="font-medium text-lg py-2">
+                        {product.productName}
+                      </h3>
+                      <p className="text-gray-500">
+                        For R{product.productPrice}
+                      </p>
+                    </div>
+                  </a>
+                );
+              })}
+        </div>
+        {products.length > 0 && (
+          <div className="flex justify-center">
+            <a
+              href="#"
+              className="rounded-full text-center text-lg px-36 py-2 border border-black md:hover:bg-black md:hover:text-white transition ease-in"
+            >
+              View all
+            </a>
+          </div>
+        )}
       </section>
-    </main>
+
+      {/* Footer */}
+      <footer className="bg-gray-100">
+        <div className="mx-auto max-w-screen-xl mt-10"></div>
+      </footer>
+    </>
   );
 }

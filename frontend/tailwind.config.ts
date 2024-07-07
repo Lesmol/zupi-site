@@ -42,7 +42,7 @@ const config: Config = {
       keyframes: {
         skeleton: {
           "0%": { backgroundColor: "#E6E6E6" },
-          "50%": { backgroundColor: "#CCCCCC" },
+          "50%": { backgroundColor: "#D9D9D9" },
           "100%": { backgroundColor: "#E6E6E6" },
         },
       },
