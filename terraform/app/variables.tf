@@ -8,6 +8,11 @@ variable "rg-name" {
   description = "The name of the realtime chat resource group"
 }
 
+variable "storage-account-name" {
+  type        = string
+  description = "The name of the realtime chat resource group"
+}
+
 # variable "subscription_id" {
 #   type        = string
 #   description = "The subscription id of the realtime chat service principal"
