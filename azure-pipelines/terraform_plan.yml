@@ -20,7 +20,7 @@ pool:
   vmImage: ubuntu-latest
 
 jobs:
-  - job: terraform-init
+  - job: terraform_init
     steps:
       - checkout: self
 
@@ -36,8 +36,8 @@ jobs:
       - script: terraform validate
         displayName: Run Terraform Validate
 
-  - job: terraform-plan
-    dependsOn: terraform-init
+  - job: terraform_plan
+    dependsOn: terraform_init
     
     steps:
       - checkout: self
