@@ -22,7 +22,9 @@ jobs:
           scriptType: bash
           addSpnToEnvironment: true
           scriptLocation: inlineScript
-          inlineScript: echo Logged into Azure CLI
+          inlineScript: |
+            az login --service-principal -u $(servicePrincipalId) -p $(servicePrincipalKey) --tenant $(tenantId)
+            echo Logged into Azure CLI
 
       - script: |
           terraform init \
