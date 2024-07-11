@@ -23,7 +23,8 @@ jobs:
           -backend-config="storage_account_name=$(storage-account-name)" \
           -backend-config="container_name=$(container-name)" \
           -backend-config="key=$(key)" \
-          -backend-config="access_key=$(access-key)"
+          -backend-config="access_key=$(access-key)" \
+          -backend-config="tenant_id=f147f402-9ef8-49f2-9771-1add3815651e"
         displayName: Run "terraform init"
         workingDirectory: ./terraform/app
         
