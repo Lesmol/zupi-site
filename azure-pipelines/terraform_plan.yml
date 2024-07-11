@@ -4,10 +4,9 @@
 # https://aka.ms/yaml
 
 trigger:
-  - none
-
-variables:
-  subscription: $(subscription)
+  branches:
+    include:
+      - main
 
 pool:
   vmImage: ubuntu-latest
@@ -20,7 +19,7 @@ jobs:
       - task: AzureCLI@2
         displayName: Signing into azure cli
         inputs:
-          azureSubscription: $(SUBSCRIPTION)
+          azureSubscription: devops-sp
           scriptType: bash
           addSpnToEnvironment: true
           scriptLocation: inlineScript
