@@ -21,7 +21,6 @@ jobs:
           -backend-config="key=$(key)" \
           -backend-config="access_key=$(access-key)"
         displayName: Run "terraform init"
-        workingDirectory: ./terraform/app
         
       - script: |
           terraform plan -input=false \
