@@ -27,7 +27,7 @@ jobs:
             echo Logged into Azure CLI
 
       - script: |
-          terraform init \
+          terraform init -input=false \
           -backend-config="container_name=$(CONTAINER-NAME)" \
           -backend-config="storage_account_name=$(STORAGE-ACCOUNT)" \
           -backend-config="resource_group_name=$(BACKEND-RG-NAME)" \
@@ -50,7 +50,7 @@ jobs:
       - checkout: self
 
       - script: |
-          terraform plan \
+          terraform plan -input=false \
           -var="location=$(LOCATION)"
           -var="rg-name=$(RG-NAME)"
         env:
