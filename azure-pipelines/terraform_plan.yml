@@ -16,15 +16,22 @@ jobs:
       - task: TerraformInstaller@1
         inputs:
           terraformVersion: latest
-        displayName: Terraform Installer"
+        displayName: Terraform Installer
+        
+      - task: AzureCLI@2
+        inputs:
+          azureSubscription: zupi-sp
+          scriptType: bash
+          scriptLocation: inlineScript
+          inlineScript: |
+            echo Logging in to Azure CLI
 
       - script: |
           terraform init -input=false \
           -backend-config="storage_account_name=$(storage-account-name)" \
           -backend-config="container_name=$(container-name)" \
           -backend-config="key=$(key)" \
-          -backend-config="access_key=$(access-key)" \
-          -backend-config="tenant_id=f147f402-9ef8-49f2-9771-1add3815651e"
+          -backend-config="access_key=$(access-key)"
         displayName: Run "terraform init"
         workingDirectory: ./terraform/app
         
