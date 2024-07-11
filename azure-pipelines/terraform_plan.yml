@@ -4,17 +4,10 @@
 # https://aka.ms/yaml
 
 trigger:
-  branches:
-    include:
-      - main
+  - none
 
 variables:
-  container_name: terraform-state
-  storage_account: zupitfstate
-  backend_rg_name: zupi-terraform-state
-  rg-name: zupi-site
-  key: zupi.tfstate
-  location: southafricanorth
+  subscription: $(subscription)
 
 pool:
   vmImage: ubuntu-latest
@@ -24,12 +17,20 @@ jobs:
     steps:
       - checkout: self
 
+      - task: AzureCLI@2
+        displayName: Signing into azure cli
+        inputs:
+          azureSubscription: $(SUBSCRIPTION)
+          scriptType: bash
+          addSpnToEnvironment: true
+          scriptLocation: inlineScript
+
       - script: |
           terraform init \
-          -backend-config="container_name=$(container_name)" \
-          -backend-config="storage_account_name=$(storage_account)" \
-          -backend-config="resource_group_name=$(backend_rg_name)" \
-          -backend-config="key=$(key)"
+          -backend-config="container_name=$(CONTAINER-NAME)" \
+          -backend-config="storage_account_name=$(STORAGE-ACCOUNT)" \
+          -backend-config="resource_group_name=$(BACKEND-RG-NAME)" \
+          -backend-config="key=$(KEY)"
         workingDirectory: ./terraform/app
         displayName: Terraform Init
         
@@ -44,6 +45,6 @@ jobs:
 
       - script: |
           terraform plan \
-          -var="location=$(location)"
-          -var="rg-name=$(rg-name)"
+          -var="location=$(LOCATION)"
+          -var="rg-name=$(RG-NAME)"
 
