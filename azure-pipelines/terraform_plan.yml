@@ -26,6 +26,7 @@ jobs:
           -backend-config="resource_group_name=zupi-terraform-state" \
           -backend-config="subscription_id=ccd5d48d-3f68-4c17-9c04-2497adee6f88" \
           -backend-config="tenant_id=f147f402-9ef8-49f2-9771-1add3815651e" \
+          -backend-config="client_id=ff060f2f-a64a-4ff1-b88d-ecdff1f588dc"
           -backend-config="client_secret=$(access-key)"
         displayName: Run "terraform init"
         workingDirectory: ./terraform/app
