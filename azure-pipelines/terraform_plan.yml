@@ -13,6 +13,7 @@ pool:
 
 jobs:
   - job: terraform_init
+
     steps:
       - checkout: self
 
@@ -25,6 +26,10 @@ jobs:
           inlineScript: |
             az login --service-principal -u $(servicePrincipalId) -p $(servicePrincipalKey) --tenant $(tenantId)
             echo Logged into Azure CLI
+          
+      - task: TerraformInstaller@1
+        inputs:
+          terraformVersion: 'latest'
 
       - script: |
           terraform init -input=false \
