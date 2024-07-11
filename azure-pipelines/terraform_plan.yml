@@ -17,12 +17,12 @@ jobs:
       - checkout: self
 
       - task: AzureCLI@2
-        displayName: Signing into azure cli
         inputs:
           azureSubscription: devops-sp
           scriptType: bash
           addSpnToEnvironment: true
           scriptLocation: inlineScript
+          inlineScript: echo Logged into Azure CLI
 
       - script: |
           terraform init \
