@@ -1,26 +1,50 @@
 trigger:
-  - none
-
-variables:
-  ARM_CLIENT_SECRET: $(AZURE_CLIENT_SECRET)
-  ARM_SUBSCRIPTION_ID: $(AZURE_SUBSCRIPTION_ID)
-  ARM_TENANT_ID: $(AZURE_TENANT_ID)
-  ARM_CLIENT_ID: $(AZURE_CLIENT_ID)
-  container_name: $(AZURE_CONTAINER_NAME)
-  account_name: $(AZURE_ACCOUNT_NAME)
-  key: $(AZURE_STATE_KEY)
-  location: southafricanorth
-  rg_name: zupi-terraform-state
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - ./terraform/app/*
 
 pool:
   vmImage: ubuntu-latest
 
 jobs:
-  - job: terraform_plan
-    displayName: "Terraform Plan"
-
+  - job: TerraformPlan
+    displayName: Terraform Plan
     steps:
       - script: |
-          echo Hello, world!!!
-          echo I am Lesedi.
-        displayName: Run Hello world
+          az login --service-principal \
+          --username $(client-id) \
+          --password $(sp-password) \
+          --tenant $(tenant-id)
+        workingDirectory: ./terraform/app
+        displayName: Run "az login"
+        
+      - task: TerraformInstaller@1
+        inputs:
+          terraformVersion: latest
+        displayName: Terraform Installer
+
+      - script: |
+          terraform init -input=false \
+          -backend-config="storage_account_name=$(storage-account-name)" \
+          -backend-config="container_name=$(container-name)" \
+          -backend-config="key=$(key)" \
+          -backend-config="access_key=$(access-key)"
+        workingDirectory: ./terraform/app
+        displayName: Run "terraform init"
+        
+      - script: |
+          terraform plan -input=false \
+          -var="location=$(location)" \
+          -var="rg-name=$(rg-name)"
+  
+  - job: TerraformApply
+    dependsOn: TerraformPlan
+    displayName: Terraform Apply
+    steps:
+      - script: |
+          terraform apply -auto-approve tfplan \
+          -var="location=$(location)" \
+          -var="rg-name=$(rg-name)"
