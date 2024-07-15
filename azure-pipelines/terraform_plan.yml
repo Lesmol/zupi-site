@@ -13,18 +13,15 @@ jobs:
   - job: TerraformPlan
     displayName: Terraform Plan
     steps:
+      - script: |
+          az login --service-principal --username $(client-id) --password $(sp-password) --tenant $(tenant-id)
+          echo Successfully logged in to Azure CLI
+        displayName: Azure CLI Login
+
       - task: TerraformInstaller@1
         inputs:
           terraformVersion: latest
         displayName: Terraform Installer
-        
-      - task: AzureCLI@2
-        inputs:
-          azureSubscription: zupi-sp
-          scriptType: bash
-          scriptLocation: inlineScript
-          inlineScript: |
-            echo Logging in to Azure CLI
 
       - script: |
           terraform init -input=false \
