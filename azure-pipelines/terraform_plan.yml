@@ -2,6 +2,9 @@ trigger:
   branches:
     exclude:
       - main
+  paths:
+    include:
+      - ./terraform/app/*
 
 pool:
   vmImage: ubuntu-latest
