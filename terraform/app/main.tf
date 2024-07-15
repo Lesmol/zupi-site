@@ -25,5 +25,7 @@ resource "azurerm_linux_web_app" "zupi_web_app" {
   service_plan_id     = azurerm_service_plan.zupi_service_plan.id
   tags                = azurerm_resource_group.zupi_rg.tags
 
-  site_config {}
+  site_config {
+    always_on = false
+  }
 }
