@@ -1,22 +1,22 @@
 trigger:
   branches:
-    include:
+    exclude:
       - main
 
 pool:
   vmImage: ubuntu-latest
-
-variables:
-  key: "zupi.tfstate"
   
 jobs:
   - job: TerraformPlan
     displayName: Terraform Plan
     steps:
       - script: |
-          az login --service-principal --username $(client-id) --password $(sp-password) --tenant $(tenant-id)
-          echo Successfully logged in to Azure CLI
-        displayName: Azure CLI Login
+          az login --service-principal \
+          --username $(client-id) \
+          --password $(sp-password) \
+          --tenant $(tenant-id)
+        displayName: Run "az login"
+        workingDirectory: ./terraform/app
 
       - task: TerraformInstaller@1
         inputs:
