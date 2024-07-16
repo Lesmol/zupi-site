@@ -36,14 +36,42 @@ jobs:
         displayName: Run "terraform init"
         
       - script: |
-          terraform plan -input=false \
+          terraform plan -input=false -out=tfplan \
           -var="location=$(location)" \
           -var="rg-name=$(rg-name)"
+
+      - publish: ./terraform/plan
+        artifact: tfplan
+        displayName: Publish tfplan artifact
+        
+  - job: Approval
+    displayName: Manual approval
+    dependsOn: TerraformPlan
+    pool: server
+    steps:
+      - task: ManualValidation@1
+        displayName: Manual Validation
+        inputs:
+          notifyUsers: molemilesedi@gmail.com
+          instructions: Please review the Terraform plan and approve to proceed with apply.
   
   - job: TerraformApply
-    dependsOn: TerraformPlan
+    dependsOn: Approval
     displayName: Terraform Apply
     steps:
+      - download: ./terraform/app
+        artifact: tfplan
+        displayName: Download tfplan artifact
+
+      - script: |
+          terraform init -input=false \
+          -backend-config="storage_account_name=$(storage-account-name)" \
+          -backend-config="container_name=$(container-name)" \
+          -backend-config="key=$(key)" \
+          -backend-config="access_key=$(access-key)"
+        workingDirectory: ./terraform/app
+        displayName: Run "terraform init"
+
       - script: |
           terraform apply -auto-approve tfplan \
           -var="location=$(location)" \
