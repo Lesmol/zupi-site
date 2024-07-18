@@ -45,7 +45,7 @@ jobs:
         workingDirectory: ./terraform/app
         displayName: Run "terraform plan"
 
-      - publish: ./terraform/plan
+      - publish: $(System.DefaultWorkingDirectory)/terraform/plan
         artifact: tfplan
         displayName: Publish tfplan artifact
         
@@ -64,7 +64,7 @@ jobs:
     dependsOn: Approval
     displayName: Terraform Apply
     steps:
-      - download: ./terraform/app
+      - download: $(System.DefaultWorkingDirectory)/terraform/app
         artifact: tfplan
         displayName: Download tfplan artifact
 
