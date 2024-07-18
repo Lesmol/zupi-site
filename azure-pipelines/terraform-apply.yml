@@ -1,26 +1,83 @@
 trigger:
-  - none
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - ./terraform/app/*
 
 variables:
-  ARM_CLIENT_SECRET: $(AZURE_CLIENT_SECRET)
-  ARM_SUBSCRIPTION_ID: $(AZURE_SUBSCRIPTION_ID)
-  ARM_TENANT_ID: $(AZURE_TENANT_ID)
-  ARM_CLIENT_ID: $(AZURE_CLIENT_ID)
-  container_name: $(AZURE_CONTAINER_NAME)
-  account_name: $(AZURE_ACCOUNT_NAME)
-  key: $(AZURE_STATE_KEY)
-  location: southafricanorth
-  rg_name: zupi-terraform-state
+  - group: zupi-infrastructure
 
 pool:
   vmImage: ubuntu-latest
 
 jobs:
-  - job: terraform_plan
-    displayName: "Terraform Plan"
-
+  - job: TerraformPlan
+    displayName: Terraform Plan
     steps:
       - script: |
-          echo Hello, world!!!
-          echo I am Lesedi.
-        displayName: Run Hello world
+          az login --service-principal \
+          --username $(lib-client-id) \
+          --password $(lib-sp-password) \
+          --tenant $(lib-tenant-id)
+        workingDirectory: ./terraform/app
+        displayName: Run "az login"
+        
+      - task: TerraformInstaller@1
+        inputs:
+          terraformVersion: latest
+        displayName: Terraform Installer
+
+      - script: |
+          terraform init -input=false \
+          -backend-config="storage_account_name=$(lib-storage-account-name)" \
+          -backend-config="container_name=$(lib-container-name)" \
+          -backend-config="key=$(lib-key)" \
+          -backend-config="access_key=$(lib-access-key)"
+        workingDirectory: ./terraform/app
+        displayName: Run "terraform init"
+        
+      - script: |
+          terraform plan -input=false -out=tfplan \
+          -var="location=$(lib-location)" \
+          -var="rg-name=$(lib-rg-name)"
+        workingDirectory: ./terraform/app
+        displayName: Run "terraform plan"
+
+      - publish: $(Build.SourcesDirectory)/terraform/app/tfplan
+        artifact: tfplan
+        displayName: Publish tfplan artifact
+        
+  - job: Approval
+    displayName: Manual approval
+    dependsOn: TerraformPlan
+    pool: server
+    steps:
+      - task: ManualValidation@1
+        displayName: Manual Validation
+        inputs:
+          notifyUsers: molemilesedi@gmail.com
+          instructions: Please review the Terraform plan and approve to proceed with apply.
+  
+  - job: TerraformApply
+    dependsOn: Approval
+    displayName: Terraform Apply
+    steps:
+      - download: $(Build.SourcesDirectory)/terraform/app/tfplan
+        artifact: tfplan
+        displayName: Download tfplan artifact
+
+      - script: |
+          terraform init -input=false \
+          -backend-config="storage_account_name=$(lib-storage-account-name)" \
+          -backend-config="container_name=$(lib-container-name)" \
+          -backend-config="key=$(lib-key)" \
+          -backend-config="access_key=$(lib-access-key)"
+        workingDirectory: ./terraform/app
+        displayName: Run "terraform init"
+
+      - script: |
+          terraform apply -auto-approve tfplan \
+          -var="location=$(lib-location)" \
+          -var="rg-name=$(lib-rg-name)"
