@@ -6,6 +6,9 @@ trigger:
     include:
       - ./terraform/app/*
 
+variables:
+  - group: zupi-infrastructure
+
 pool:
   vmImage: ubuntu-latest
   
