@@ -50,22 +50,24 @@ jobs:
         displayName: Publish tfplan artifact
         
   - job: Approval
-    displayName: Manual approval
+    displayName: Manual Approval
     dependsOn: TerraformPlan
     pool: server
     steps:
       - task: ManualValidation@1
         displayName: Manual Validation
+        timeoutInMinutes: 2
         inputs:
           notifyUsers: molemilesedi@gmail.com
           instructions: Please review the Terraform plan and approve to proceed with apply.
+          onTimeout: resume
   
   - job: TerraformApply
     dependsOn: Approval
     condition: succeeded()
     displayName: Terraform Apply
     steps:
-      - download: $(Build.SourcesDirectory)/terraform/app/tfplan
+      - download: current
         artifact: tfplan
         displayName: Download tfplan artifact
 
