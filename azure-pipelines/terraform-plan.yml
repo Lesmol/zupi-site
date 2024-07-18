@@ -15,9 +15,9 @@ jobs:
     steps:
       - script: |
           az login --service-principal \
-          --username $(client-id) \
-          --password $(sp-password) \
-          --tenant $(tenant-id)
+          --username $(lib-client-id) \
+          --password $(lib-sp-password) \
+          --tenant $(lib-tenant-id)
         displayName: Run "az login"
         workingDirectory: ./terraform/app
 
@@ -28,16 +28,16 @@ jobs:
 
       - script: |
           terraform init -input=false \
-          -backend-config="storage_account_name=$(storage-account-name)" \
-          -backend-config="container_name=$(container-name)" \
-          -backend-config="key=$(key)" \
-          -backend-config="access_key=$(access-key)"
+          -backend-config="storage_account_name=$(lib-storage-account-name)" \
+          -backend-config="container_name=$(lib-container-name)" \
+          -backend-config="key=$(lib-key)" \
+          -backend-config="access_key=$(lib-access-key)"
         displayName: Run "terraform init"
         workingDirectory: ./terraform/app
         
       - script: |
           terraform plan -input=false \
-          -var="location=$(location)" \
-          -var="rg-name=$(rg-name)"
+          -var="location=$(lib-location)" \
+          -var="rg-name=$(lib-rg-name)"
         displayName: Run "terraform plan"
         workingDirectory: ./terraform/app
