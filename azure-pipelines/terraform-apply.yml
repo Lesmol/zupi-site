@@ -45,7 +45,7 @@ jobs:
         workingDirectory: ./terraform/app
         displayName: Run "terraform plan"
 
-      - publish: $(System.DefaultWorkingDirectory)/terraform/plan
+      - publish: $(Build.SourcesDirectory)/terraform/plan
         artifact: tfplan
         displayName: Publish tfplan artifact
         
