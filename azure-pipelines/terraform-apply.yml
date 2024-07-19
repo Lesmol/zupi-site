@@ -81,8 +81,9 @@ jobs:
         displayName: Run "terraform init"
 
       - script: |
-          terraform apply -auto-approve tfplan \
+          terraform apply -auto-approve \
           -var="location=$(lib-location)" \
-          -var="rg-name=$(lib-rg-name)"
+          -var="rg-name=$(lib-rg-name)" \
+          tfplan
         workingDirectory: ./terraform/app
         displayName: Run "terraform apply"
