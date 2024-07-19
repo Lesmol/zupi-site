@@ -84,3 +84,5 @@ jobs:
           terraform apply -auto-approve tfplan \
           -var="location=$(lib-location)" \
           -var="rg-name=$(lib-rg-name)"
+        workingDirectory: ./terraform/app
+        displayName: Run "terraform apply"
