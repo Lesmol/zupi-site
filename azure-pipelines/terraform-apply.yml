@@ -67,9 +67,11 @@ jobs:
     condition: succeeded()
     displayName: Terraform Apply
     steps:
-      - download: current
-        artifact: tfplan
-        displayName: Download tfplan artifact
+      - task: DownloadPipelineArtifact@2
+        inputs:
+          artifactName: tfplan
+          targetPath: $(Build.SourcesDirectory)/terraform/app/tfplan
+        displayName: Download artifact
 
       - script: |
           terraform init -input=false \
