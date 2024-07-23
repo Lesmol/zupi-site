@@ -4,8 +4,8 @@ trigger:
       - main
   paths:
     include:
-      - ./terraform/app/*
-      - ./azure-pipelines/terraform-apply.yml
+      - terraform/app/*
+      - azure-pipelines/terraform-apply.yml
 
 variables:
   - group: zupi-infrastructure
@@ -64,6 +64,19 @@ jobs:
     condition: succeeded()
     displayName: Terraform Apply
     steps:
+      - script: |
+          az login --service-principal \
+          --username $(lib-client-id) \
+          --password $(lib-sp-password) \
+          --tenant $(lib-tenant-id)
+        workingDirectory: ./terraform/app
+        displayName: Run "az login"
+        
+      - task: TerraformInstaller@1
+        inputs:
+          terraformVersion: latest
+        displayName: Terraform Installer
+
       - script: |
           terraform init -input=false \
           -backend-config="storage_account_name=$(lib-storage-account-name)" \
