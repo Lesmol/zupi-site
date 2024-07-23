@@ -5,6 +5,7 @@ trigger:
   paths:
     include:
       - ./terraform/app/*
+      - ./azure-pipelines/terraform-apply.yml
 
 variables:
   - group: zupi-infrastructure
