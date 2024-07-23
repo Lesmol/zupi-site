@@ -45,8 +45,10 @@ jobs:
         workingDirectory: ./terraform/app
         displayName: Run "terraform plan"
 
-      - publish: $(Build.SourcesDirectory)/terraform/app/tfplan
-        artifact: tfplan
+      - task: PublishPipelineArtifact@1
+        inputs:
+          artifact: tfplan
+          targetPath: $(Build.SourcesDirectory)/terraform/app/tfplan
         displayName: Publish tfplan artifact
         
   - job: Approval
@@ -60,7 +62,7 @@ jobs:
         inputs:
           notifyUsers: molemilesedi@gmail.com
           instructions: Please review the Terraform plan and approve to proceed with apply.
-          onTimeout: resume
+          onTimeout: reject
   
   - job: TerraformApply
     dependsOn: Approval
