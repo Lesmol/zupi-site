@@ -40,17 +40,11 @@ jobs:
         displayName: Run "terraform init"
         
       - script: |
-          terraform plan -input=false -out=tfplan \
+          terraform plan -input=false \
           -var="location=$(lib-location)" \
           -var="rg-name=$(lib-rg-name)"
         workingDirectory: ./terraform/app
         displayName: Run "terraform plan"
-
-      - task: PublishPipelineArtifact@1
-        inputs:
-          artifact: tfplan
-          targetPath: $(Build.SourcesDirectory)/terraform/app/tfplan
-        displayName: Publish tfplan artifact
         
   - job: Approval
     displayName: Manual Approval
@@ -70,12 +64,6 @@ jobs:
     condition: succeeded()
     displayName: Terraform Apply
     steps:
-      - task: DownloadPipelineArtifact@2
-        inputs:
-          artifactName: tfplan
-          targetPath: $(Build.SourcesDirectory)/terraform/app/tfplan
-        displayName: Download artifact
-
       - script: |
           terraform init -input=false \
           -backend-config="storage_account_name=$(lib-storage-account-name)" \
@@ -88,7 +76,6 @@ jobs:
       - script: |
           terraform apply -auto-approve \
           -var="location=$(lib-location)" \
-          -var="rg-name=$(lib-rg-name)" \
-          tfplan
+          -var="rg-name=$(lib-rg-name)"
         workingDirectory: ./terraform/app
         displayName: Run "terraform apply"
