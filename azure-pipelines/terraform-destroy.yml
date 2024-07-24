@@ -1,0 +1,47 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- none
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - script: |
+      az login --service-principal \
+      --username $(lib-client-id) \
+      --password $(lib-sp-password) \
+      --tenant $(lib-tenant-id)
+    workingDirectory: ./terraform/app
+    displayName: Run "az login"
+        
+  - task: TerraformInstaller@1
+    inputs:
+      terraformVersion: latest
+    displayName: Terraform Installer
+
+  - script: |
+      terraform init -input=false \
+      -backend-config="storage_account_name=$(lib-storage-account-name)" \
+      -backend-config="container_name=$(lib-container-name)" \
+      -backend-config="key=$(lib-key)" \
+      -backend-config="access_key=$(lib-access-key)"
+    workingDirectory: ./terraform/app
+    displayName: Run "terraform init"
+    
+  - script: |
+      terraform plan -destroy -input=false \
+          -var="location=$(lib-location)" \
+          -var="rg-name=$(lib-rg-name)"
+    workingDirectory: ./terraform/app
+    displayName: Run "terraform plan -destroy"
+    
+  - script: |
+      terraform destroy -auto-approve \
+          -var="location=$(lib-location)" \
+          -var="rg-name=$(lib-rg-name)"
+    workingDirectory: ./terraform/app
+    displayName: Run "terraform destroy"
