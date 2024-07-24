@@ -33,10 +33,12 @@ stages:
           checkLatest: true
         displayName: Install Node.js
 
-      - script: |
-          npm ci
-          npm run build
-        displayName: Build Next.js app
+      - script: npm ci
+        displayName: Run "npm ci"
+        workingDirectory: ./frontend
+        
+      - script: npm run build
+        displayName: Run "npm run build"
         workingDirectory: ./frontend
 
       - task: ArchiveFiles@2
