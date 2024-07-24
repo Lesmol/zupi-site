@@ -158,9 +158,9 @@ export default function Home() {
 
         <div className="flex flex-wrap justify-around">
           {products.length === 0
-            ? placeholder.map(() => {
+            ? placeholder.map((index) => {
                 return (
-                  <div className="h-96 w-72 bg-gray-100 rounded-lg mb-10">
+                  <div key={index} className="h-96 w-72 bg-gray-100 rounded-lg mb-10">
                     {/* Product image skeleton */}
                     <div className="rounded w-11/12 mx-auto mt-3 aspect-square animate-skeleton"></div>
                     {/* Product name skeleton */}
@@ -173,7 +173,7 @@ export default function Home() {
               })
             : products.slice(0, 8).map((product) => {
                 return (
-                  <a href="#">
+                  <a key={product.id} href="#">
                     <div className="group h-96 max-w-72 mb-10 overflow-clip">
                       <div className="overflow-clip rounded">
                         <img
