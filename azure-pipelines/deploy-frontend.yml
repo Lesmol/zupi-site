@@ -31,10 +31,11 @@ stages:
           versionSpec: '20.x'
           checkLatest: true
         displayName: Install Node.js
-
-      - script: npm i
-        displayName: Run "npm i"
-        workingDirectory: ./frontend
+      
+      - task: Npm@1
+        inputs:
+          command: 'ci'
+          workingDir: './frontend'
         
       - script: npm run build
         displayName: Run "npm run build"
