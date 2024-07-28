@@ -6,6 +6,7 @@ trigger:
   paths:
     include:
       - frontend/*
+      - azure-pipelines/*
 
 variables:
   packagePath: $(Build.ArtifactStagingDirectory)/zupi.zip
@@ -32,7 +33,7 @@ stages:
           version: 20.x
         displayName: Install Node
       
-      - script: npm ci
+      - script: npm install
         displayName: Run "npm ci"
         workingDirectory: ./frontend
         
