@@ -13,6 +13,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    permissions:
+      id-token: write #This is required for requesting the JWT
+
     steps:
       - uses: actions/checkout@v4
 
@@ -38,6 +45,13 @@ jobs:
       #     name: next-app
       #     path: frontend/next.zip
       #     if-no-files-found: error
+      
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_D8B96EB5201A43C38B6263B300930371 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_005FBE4028C944E39202361A1B4B287E }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_BB38BFB21B234A69B0FADEE97A1B9BE7 }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
