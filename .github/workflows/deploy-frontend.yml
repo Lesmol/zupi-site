@@ -44,10 +44,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
 
-    defaults:
-      run:
-        working-directory: ./frontend
-
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
