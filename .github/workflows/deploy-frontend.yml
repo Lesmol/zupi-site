@@ -59,6 +59,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: next-app
+
+      - name: List files in current directory
+        run: ls -al
       
       - name: Login to Azure
         uses: azure/login@v2
