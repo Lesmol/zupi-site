@@ -2,7 +2,6 @@ trigger:
   branches:
     exclude:
       - main
-      - terraform-pipelines
   paths:
     include:
       - ./terraform/app/*
