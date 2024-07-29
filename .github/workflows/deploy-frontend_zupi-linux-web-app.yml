@@ -28,11 +28,16 @@ jobs:
           npm run test --if-present
         working-directory: ./frontend
 
+      - name: Zip all files for upload between jobs
+        # IMPORTANT: .next is a hidden folder and will NOT be included in the zip unless we specify it
+        run: zip next.zip ./* .next -qr
+        working-directory: ./frontend
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: next-app
-          path: frontend/.next/standalone
+          path: frontend/next.zip
           if-no-files-found: error
 
   deploy:
@@ -69,4 +74,6 @@ jobs:
           app-name: 'zupi-linux-web-app'
           slot-name: 'Production'
           package: .
-          
+      
+      - name: Delete zip file
+        run: rm next.zip
